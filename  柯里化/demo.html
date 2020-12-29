@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function url(scheme, host, path){
+      return `${scheme}${host}${path}`
+    }
+    const website = url('https://','www.baidu.com','/s')
+    console.log(website) // https://www.baidu.com/s
+
+    // 柯里化1
+    function currying1(scheme) {
+      return function(host, path) {
+        return `${scheme}${host}${path}`
+      }
+    }
+    const newFn = currying1('https://')
+    const result1 = newFn('www.baidu.com', '/s')
+    console.log(result1) // https://www.baidu.com/s
+
+    // 柯里化
+    function currying(scheme) {
+      return function(host) {
+        return function (path) {
+          return `${scheme}${host}${path}` 
+        }
+      }
+    }
+    const result = currying('https://')('www.baidu.com')('/s')
+    console.log(result) // https://www.baidu.com/s
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+/* 
+给定一个字符串str，将其中的stra替换为strb。(不可使用正则和现成的函数例如indexOf, substring)
+例如: str=“abcdefg”, stra=“abc”, strb=“hhh”
+output: “hhhdefg”
+*/
+function handle(str,stra,strb) {
+  let i=0,ilen=str.length,jlen=stra.length,newStr='';
+  for(;i<ilen;i++) {
+    let j=0,cur='';
+    for(;j<jlen;j++) {
+      cur += str[i+j]
+    }
+    if(cur === stra) {
+      i+=jlen - 1
+      newStr += strb
+      continue
+    }
+    newStr += str[i]
+  }
+  return newStr
+}
+
+console.log(handle('abcdefg', 'abc', 'hhh')) // 'hhhdefg'
+console.log(handle('abcdefg', 'cd', 'oo')) // 'abooefg'
+console.log(handle('abcdefgcd', 'cd', 'oo')) // 'abooefgoo'
+</script>
+</body>
+</html>

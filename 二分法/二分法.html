@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+function upper_bound_( n ,  v ,  a ) {
+    // write code here
+    let start=0;
+    let end = n - 1;
+    let middle,element;
+    while(start < end) {
+      middle = Math.floor((end + start) / 2)
+      element = a[middle]
+      if(element < v){
+        start = middle + 1
+      } else {
+        end = middle
+      }
+    }
+    return a[end] >= v ? end + 1 : n + 1
+}
+// console.log(upper_bound_(5,4,[1,2,4,4,5])) // 3
+// console.log(upper_bound_(9,5,[1,2,3,4,4,5,5,6,7])) // 6
+console.log(upper_bound_(10,2,[1,1,2,3,7,7,7,9,9,10])) // 3
+
+</script>
+</body>
+</html>
